@@ -38,7 +38,7 @@ public class CardSlotManager : MonoBehaviour
 
     void InitializeCardData()
     {
-        for (int slot = 1; slot <= 5; slot++) // Slot 1 to 5
+        for (int slot = 1; slot <= 10; slot++) // Slot 1 to 10
         {
             for (int value = 1; value <= 5; value++) // 5 cards per slot
             {

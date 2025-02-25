@@ -7,6 +7,6 @@ public class AttackButton : MonoBehaviour
 
     void Start()
     {
-        attackButton.onClick.AddListener(() => AttackManager.Instance.Attack());
+       
     }
 }

@@ -60,6 +60,14 @@ public class PickCard : MonoBehaviour
         }
 
         int slotID = parentSlot.slotID;
+        bool isPlayer1 = TurnManager.Instance.isPlayer1Turn; // Get current player turn
+
+        if (!TurnManager.Instance.CanPlayerInteract(slotID, isPlayer1))
+        {
+            Debug.Log("You can't pick this card! It's either not your turn or not your slot.");
+            return;
+        }
+
         if (PlayCardManager.Instance.IsSlotOccupied(slotID))
         {
             Debug.Log($"Slot {slotID} is already occupied! Choose another.");
@@ -70,11 +78,12 @@ public class PickCard : MonoBehaviour
         cardRenderer.material.color = Color.green;
 
         Debug.Log("Card Selected: " + CardName);
-        PlayCardManager.Instance.SetPlayCard(CardName, CardValue, slotID);
+        PlayCardManager.Instance.SetPlayCard(CardName, CardValue, slotID, isPlayer1);
 
         parentSlot.cards.Remove(this);
         Destroy(gameObject);
     }
+
 
     public void Reveal()
     {
